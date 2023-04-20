@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>Chat Manager</title>
+  </head>
+  <body>
+    <h1>Send a Message</h1>
+    <form method="post" action="/" enctype=multipart/form-data>
+     <fieldset>
+        <legend>Контактная информация</legend>
+        <p><label for="name_message">Имя<em>*</em></label><input type="text" name = 'name_message' id="name_message"></p>
+        <p><label for="email_message">E-mail</label><input type="text" name = 'email_message' id="email_message"></p>
+        <label for="file_message">Прикрепить резюме:</label>
+         <p><input type="file" id="file_message" name="file_message" accept=".doc, .docx, .pdf"></p>
+        </fieldset>
+
+            <button type="submit">Отправить</button>
+        </form>
+
+    </form>
+
+
+
+  </body>
+
+</html>

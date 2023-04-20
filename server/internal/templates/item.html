@@ -1,0 +1,110 @@
+<!Doctype html>
+<html lang="ru">
+  <head>
+      <meta charset="utf-8">
+      <title>Chat Manager</title>
+      <style>
+      @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;500&display=swap');
+      * {
+          margin: 0;
+          padding:0;
+          box-sizing: border-box;
+      }
+      body {
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 200;
+          color: black;
+          background: white;
+      }
+
+      input {
+          width: 90%;
+          outline: none;
+          margin: 10px 5%;
+          padding: 15px 10px;
+          font-size: 14px;
+          border: 2px solid silver;
+          border-radius: 5px;
+      }
+
+      input:focus {
+          border-color: #db5d5d;
+      }
+
+      select {
+          width: 90%;
+          outline: none;
+          margin: 10px 5%;
+          padding: 15px 10px;
+          font-size: 14px;
+          border: 2px solid silver;
+          border-radius: 5px;
+      }
+      button {
+          width: 90%;
+          outline: none;
+          margin: 10px 5%;
+          padding: 15px 10px;
+          font-size: 14px;
+          border: 2px solid silver;
+          border-radius: 5px;
+      }
+      </style>
+  </head>
+  <body>
+    <h1>Send a Message</h1>
+
+    <form method="post" action="/" enctype=multipart/form-data>
+     <fieldset>
+        <legend>Контактная информация</legend>
+         <p></p>
+        <p><label for="name_message">Имя:</label><input type="text" name = 'name_message' id="name_message"></p>
+        <p><label for="email_message">E-mail: </label><input type="text" name = 'email_message' id="email_message"></p>
+         <p><label for="city_message">Город: </label>
+             <select name = 'city_message' id="city_message">
+                 <option value="Санкт-Петербург">Санкт-Петербург</option>
+                 <option value="Москва">Москва</option>
+                 <option value="Краснодар">Краснодар</option>
+                 <option value="Усть-Кут">Усть-Кут</option>
+             </select>
+         </p>
+
+         <label for="file_message">Прикрепить резюме:</label>
+         <p><input type="file" id="file_message" name="file_message" accept=".doc, .docx, .pdf"></p>
+         <button type="submit" id="order">Отправить</button>
+     </fieldset>
+        </form>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        let tg = window.Telegram.WebApp;
+        let butn = document.getElementById('order')
+        tg.expand();
+        order.addEventListener("click",() => {
+            let name = document.getElementById("name_message").value;
+            let email = document.getElementById("email_message").value;
+            let city = document.getElementById('city_message').value;
+
+
+
+            if(name.length <2){
+                document.getElementById("eror").innerText = 'Ошибка в имени';
+                return
+            }
+            let data = {
+                name: name,
+                email: email,
+                city: city,
+
+            }
+            tg.sendData(JSON.stringify(data));
+
+            tg.close()
+        });
+
+    </script>
+
+
+
+  </body>
+
+</html>
